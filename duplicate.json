@@ -29,7 +29,7 @@
              $resp[] = $elt["id"];
         }
         
-    } while($page != $pages);
+    } while($page < $pages);
     
     echo json_encode($resp);
 
