@@ -1,0 +1,7 @@
+<?php
+
+$flickr_apikey = "yourapikey";
+$flickr_secret = "yourapisecret";
+$home_url = "http://www.yourdomain.com/flickrdupfinder/";
+
+?>
