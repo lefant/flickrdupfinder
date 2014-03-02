@@ -317,7 +317,7 @@ FDF.set_status = function(id, status) {
 // ================================================================ 
 
 FDF.handle = function(element) {
-    var title = element["title"];
+    var title = element["title"].replace(/-[0-9]$/, '');
     var date  = element["datetaken"];
     var key = title + "##" + date;
     if (!FDF.map[key])
