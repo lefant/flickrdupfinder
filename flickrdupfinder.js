@@ -34,7 +34,8 @@ FDF.boot = function() {
     $(window).bind("scroll", FDF.on_resize);
     
     // issue status request
-    $.getJSON("status.json", {}, success : FDF.on_json_status);
+    $.getJSON("status.json", {}, FDF.on_json_status);
+    FDF.show_page("login");
 }
 
 // ================================================================
