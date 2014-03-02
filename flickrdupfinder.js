@@ -155,7 +155,7 @@ FDF.on_click_find = function() {
     
     // initialize results
     FDF.map = {};
-    FDF.dup = {};
+    FDF.dup = [];
     
     // start fetching data
     FDF.fetch(1);
@@ -213,20 +213,23 @@ FDF.analyze = function() {
     FDF.elements = [];         // array of duplicate photo element 
     FDF.status = {};           // associative array : id::string => duplicate::boolean
     
-     for (k in FDF.map) {
+    for (k in FDF.map) {
         if (FDF.map[k].length != 1) {
-            FDF.dup[k] = FDF.map[k];
+	    FDF.dup.push(k);
         }
     }
 
+    FDF.dup = FDF.dup.slice(0,500);
+
     var count = 0;
-    for (k in FDF.dup) {
+    for (j in FDF.dup) {
         count++;
+        k = FDF.dup[j];
         
         var wrapper = $("<div class=\"wrapper\"></div>");
         $("#dup").append(wrapper);
         
-        for (var i = 0; i < FDF.dup[k].length; i++) {
+        for (var i = 0; i < FDF.map[k].length; i++) {
             var elt = FDF.map[k][i];
 
             var id = elt.id;
@@ -257,7 +260,7 @@ FDF.analyze = function() {
         }
     }
     
-    $("#dupcount").html("Found " + count + " duplicates !. Below is the list of duplicate candidates. You can now tag them with the 'duplicate' tag. Then <a href=\"http://www.flickr.com/photos/me/tags/duplicate\">click here</a> to go to Flickr and delete the tagged photos.");
+    $("#dupcount").html("Found " + count + " duplicates (only up to a maximum of 500 are shown). Below is the list of duplicate candidates. You can now tag them with the 'duplicate' tag. Then <a href=\"http://www.flickr.com/photos/me/tags/duplicate\">click here</a> to go to Flickr and delete the tagged photos.");
     FDF.element_info(0);
     FDF.fetch_status();
 }
@@ -362,4 +365,3 @@ FDF.on_click_status = function(id) {
 
 
 $(document).ready(FDF.boot);
-
