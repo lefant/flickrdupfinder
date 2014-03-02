@@ -48,7 +48,7 @@ FDF.on_click_login = function() {
     FDF.dialog("dlg_login", 300, 100);
     
     // redirect to flickr
-    window.location="http://flickr.com/services/auth/?api_key=9ee2032372b12730ea8b12e7d839ed5a&perms=write&api_sig=d3c9fbee2e20ed9da756491e095c58f3";
+    window.location="http://flickr.com/services/auth/?api_key=34ad809a11642749cfc028a94e6c8ed0&perms=write&api_sig=a76c11d5c67ca8da209d429672c9b828";
 }
 
 // ================================================================
